@@ -1,8 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify
-from flask_sqlalchemy import SQLAlchemy
+from flask import Flask, render_template, request, jsonify
 import requests
 import joblib
-import sklearn
 
 app = Flask(__name__)
 
