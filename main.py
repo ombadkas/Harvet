@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import requests
 import joblib
+import os
 
 app = Flask(__name__)
 
@@ -44,12 +45,13 @@ class Website():
         return render_template('final2.html', crop_output=crop_output, fertilizer_output=fertilizer_output)
 
     def final2(self):
-        crop = joblib.load('F:/pythonProject/main_dp_project/crop.pkl')
+        current_directory = os.getcwd()
+        crop = joblib.load(current_directory+'/crop.pkl')
         grip = int(crop.predict(self.crop_arr))
         crop_output = self.crop_perticular(grip)
 
         self.crop_arr2=[[self.soil_type,self.nitrogen,self.phosphorus,self.potassium,self.temperature,self.water,grip]]
-        fertilizer = joblib.load('F:/pythonProject/main_dp_project/fertilizer2311.pkl')
+        fertilizer = joblib.load(current_directory+'/fertilizer2311.pkl')
         find = fertilizer.predict(self.crop_arr2)
         fertilizer_output = self.fer_perticular(find)
         return crop_output ,fertilizer_output
@@ -131,6 +133,7 @@ class Website():
             weather_data = response.json()
             temperature = weather_data['main']['temp']
             self.temperature = round(temperature - 273,1)
+            print("help")
             return jsonify({'temperature': self.temperature})
         else:
             return jsonify({'error': 'Failed to retrieve weather data'})
