@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, jsonify
 import requests
 import joblib
 import os
-import sklearn 
 
 app = Flask(__name__)
 
