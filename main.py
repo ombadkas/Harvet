@@ -137,4 +137,4 @@ class Website():
 
 if __name__ == '__main__':
     website = Website()
-    website.app.run(debug=True,host='0.0.0.0', port=5000)
+    website.app.run(debug=True,host='54.165.214.196', port=5000)
