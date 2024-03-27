@@ -127,6 +127,7 @@ class Website():
         data = request.get_json()
         latitude = data['latitude']
         longitude = data['longitude']
+        print(latitude)
         api_key = "1e92e74cf6380f493c062773f324d611"
         url = f'https://api.openweathermap.org/data/2.5/weather?lat={latitude}&lon={longitude}&appid={api_key}'
         response = requests.get(url)
