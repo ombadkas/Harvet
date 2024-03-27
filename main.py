@@ -46,6 +46,7 @@ class Website():
 
     def final2(self):
         current_directory = os.getcwd()
+        print(current_directory)
         crop = joblib.load(current_directory+'/crop.pkl')
         grip = int(crop.predict(self.crop_arr))
         crop_output = self.crop_perticular(grip)
